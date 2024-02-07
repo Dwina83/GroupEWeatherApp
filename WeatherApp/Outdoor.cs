@@ -1,10 +1,13 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Globalization;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Text.RegularExpressions;
 using System.Threading.Tasks;
+using WeatherApp.Queries;
+using static System.Runtime.InteropServices.JavaScript.JSType;
 
 namespace WeatherApp
 {
@@ -72,24 +75,62 @@ namespace WeatherApp
             Console.WriteLine("Medel luftfuktighet = " + Math.Round(avgHumidity/days, 2));
         }
 
-        public static void DaysSortedByTemp(MatchCollection matches)
+        public static void DaysSortedByTemp(MatchCollection matches, string location, string type)
         {
-            var days = matches.Cast<Match>()
-                        .Select(m => double.Parse(m.Groups["temp"].Value) < 10);
+            
+            IEnumerable<Match> relevantMatches = matches.Cast<Match>()
+                .Where(match => match.Success &&
+                            (match.Groups["location"].Value == location));
 
-            //var days1 = from match in matches where match //select match;
+            List<AvgTemp> sortedDays = new List<AvgTemp> ();
+            foreach (Match match in relevantMatches)
+            {
+                int month = int.Parse(match.Groups["month"].Value);
+                int date = int.Parse(match.Groups["date"].Value);
 
+                bool exists = sortedDays.Any(day => day.Month == month && day.Date == date);
+
+                if (!exists)
+                {
+                    sortedDays.Add(new AvgTemp { Month = month, Date = date });
+                }
+            }
 
             
 
-            var days2 = (MatchCollection)matches.Where(match => double.Parse(match.Groups["temp"].Value) < 10).GroupBy(x => x.Groups["month"]);
-
-            foreach (var item in days2)
+            if (type == "temp")
             {
-                Console.WriteLine(item);
-            }
+                int iterator = 1;
+                foreach (var day in sortedDays)
+                {
+                    day.Temp = relevantMatches.Where(x => int.Parse(x.Groups["month"].Value) == day.Month && int.Parse(x.Groups["date"].Value) == day.Date).Average(x => double.Parse(x.Groups[type].Value, CultureInfo.InvariantCulture));
+                }
 
-            int test = 0;
+                sortedDays = sortedDays.OrderByDescending(x => x.Temp).ToList();
+
+                foreach (var day in sortedDays)
+                {
+                    Console.WriteLine(iterator + $" Dag: " + day.Date + " Månad: " + day.Month + " " + type + ": " + Math.Round(day.Temp, 2));
+                    iterator++;
+                }
+            }
+            else
+            {
+                int iterator = 1;
+                foreach (var day in sortedDays)
+                {
+                    day.Humidity = relevantMatches.Where(x => int.Parse(x.Groups["month"].Value) == day.Month && int.Parse(x.Groups["date"].Value) == day.Date).Average(x => double.Parse(x.Groups[type].Value, CultureInfo.InvariantCulture));
+                }
+
+                sortedDays = sortedDays.OrderBy(x => x.Humidity).ToList();
+
+                foreach (var day in sortedDays)
+                {
+                    Console.WriteLine(iterator +  $" Dag: " + day.Date + " Månad: " + day.Month + " " + type + ": " + Math.Round(day.Humidity, 2));
+                    iterator++;
+                }
+            }
+            
 
         }
     }

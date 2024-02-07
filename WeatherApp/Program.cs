@@ -15,8 +15,14 @@ namespace WeatherApp
 
 
 
-            Outdoor.DaysSortedByTemp(matches);
-
+            Outdoor.DaysSortedByTemp(matches, "Ute", "temp");
+            Console.WriteLine();
+            Outdoor.DaysSortedByTemp(matches, "Ute", "humidity");
+            Console.WriteLine();
+            Outdoor.DaysSortedByTemp(matches, "Inne", "temp");
+            Console.WriteLine();
+            Outdoor.DaysSortedByTemp(matches, "Inne", "humidity");
+            
             // Outdoor.AverageTemp(matches);
 
         }
