@@ -74,14 +74,15 @@ namespace WeatherApp
 
         public static void DaysSortedByTemp(MatchCollection matches)
         {
-            //var days = matches.Cast<Match>().Select(m => double.Parse(m.Groups["temp"].Value) < 10);
+            var days = matches.Cast<Match>()
+                        .Select(m => double.Parse(m.Groups["temp"].Value) < 10);
 
             //var days1 = from match in matches where match //select match;
 
-            //var days2 = (MatchCollection)matches.Where(match => double.Parse(match.Groups["temp"].Value) < 10).GroupBy(x => x.Groups["month"]);
 
-            //Dwina: kan det funka?
-            var days2 = matches.OfType<Match>().Where(m => double.Parse((m.Groups["temp"].Value),CultureInfo.InvariantCulture) < 10).ToList();
+            
+
+            var days2 = (MatchCollection)matches.Where(match => double.Parse(match.Groups["temp"].Value) < 10).GroupBy(x => x.Groups["month"]);
 
             foreach (var item in days2)
             {
