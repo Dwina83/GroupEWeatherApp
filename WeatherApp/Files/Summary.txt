@@ -1,0 +1,15 @@
+juni: 16,02
+juli: 19,94
+augusti: 16,01
+september: 15,96
+oktober: 7,86
+november: 3,76
+december: 3,27
+Genomsnittstemperatur per månad.
+juni: 16,02
+juli: 19,94
+augusti: 16,01
+september: 15,96
+oktober: 7,86
+november: 3,76
+december: 3,27
