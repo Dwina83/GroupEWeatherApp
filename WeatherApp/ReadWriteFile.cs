@@ -19,6 +19,14 @@ namespace WeatherApp
             }
             return line;
         }
+
+        public static void WriteFile(string input)
+        {
+            using (StreamWriter writer = new StreamWriter(path + "Summary.txt", true))
+            {
+                writer.WriteLine(input);
+            }
+        }
         
     }
 }

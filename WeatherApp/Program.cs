@@ -13,17 +13,23 @@ namespace WeatherApp
             MatchCollection matches = Regex.Matches(output, pattern);
             int test = 0;
 
+            // Indoor.MoldIndex(matches, "Inne");
+            //Indoor.MoldIndex(matches, "Ute");
 
+            //Outdoor.DaysSortedByTemp(matches, "Ute", "temp");
+            //Console.WriteLine();
+            //Outdoor.DaysSortedByTemp(matches, "Ute", "humidity");
+            //Console.WriteLine();
+            //Outdoor.DaysSortedByTemp(matches, "Inne", "temp");
+            //Console.WriteLine();
+            //Outdoor.DaysSortedByTemp(matches, "Inne", "humidity");
 
-            Outdoor.DaysSortedByTemp(matches, "Ute", "temp");
-            Console.WriteLine();
-            Outdoor.DaysSortedByTemp(matches, "Ute", "humidity");
-            Console.WriteLine();
-            Outdoor.DaysSortedByTemp(matches, "Inne", "temp");
-            Console.WriteLine();
-            Outdoor.DaysSortedByTemp(matches, "Inne", "humidity");
-            
             // Outdoor.AverageTemp(matches);
+
+            //Outdoor.IsMeterologic(matches, "Winter");
+            //Outdoor.IsMeterologic(matches, "Autumn");
+
+            Outdoor.WriteAverageMonthly(matches, "Ute");
 
         }
     }
