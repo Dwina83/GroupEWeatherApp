@@ -132,7 +132,7 @@ namespace WeatherApp
             }
         }
 
-        public static void dailyTemp(MatchCollection matches, string location)
+        public static void DailyTemp(MatchCollection matches, string location)
         {
             IEnumerable<Match> relevantMatches = matches.Cast<Match>()
                 .Where(match => match.Success &&
