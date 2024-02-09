@@ -1,15 +1,19 @@
-juni: 16,02
-juli: 19,94
-augusti: 16,01
-september: 15,96
-oktober: 7,86
-november: 3,76
-december: 3,27
-Genomsnittstemperatur per månad.
-juni: 16,02
-juli: 19,94
-augusti: 16,01
-september: 15,96
-oktober: 7,86
-november: 3,76
-december: 3,27
+Ute
+juni: Temperatur: 15,83 Luftfuktighet: 49,07 Mögelindex: -142,53
+juli: Temperatur: 20,06 Luftfuktighet: 56,14 Mögelindex: -132,9
+augusti: Temperatur: 17,44 Luftfuktighet: 50,88 Mögelindex: -145,95
+september: Temperatur: 16,11 Luftfuktighet: 59,74 Mögelindex: -90,4
+oktober: Temperatur: 8,18 Luftfuktighet: 64,17 Mögelindex: -35,89
+november: Temperatur: 3,86 Luftfuktighet: 84,13 Mögelindex: 5,95
+december: Temperatur: 3,15 Luftfuktighet: 78,39 Mögelindex: 1,45
+Inne
+juni: Temperatur: 24,61 Luftfuktighet: 28,87 Mögelindex: -366,04
+juli: Temperatur: 26,16 Luftfuktighet: 42,95 Mögelindex: -278,2
+augusti: Temperatur: 25,49 Luftfuktighet: 34,23 Mögelindex: -338,05
+september: Temperatur: 23,22 Luftfuktighet: 41,32 Mögelindex: -257,95
+oktober: Temperatur: 22,42 Luftfuktighet: 27,25 Mögelindex: -344,71
+november: Temperatur: 22,8 Luftfuktighet: 18,82 Mögelindex: -408,73
+december: Temperatur: 21,77 Luftfuktighet: 16,04 Mögelindex: -408,74
+Starten på den kallaste perioden på vintern är dag: 6 månad 11
+Dag: 4 Månad: 10 är metrologisk höst.
+Mögelformel ((day.Humidity - 78) * (day.Temp / 15)) / 0.22

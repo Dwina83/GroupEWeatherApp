@@ -6,7 +6,6 @@ using System.Linq;
 using System.Text;
 using System.Text.RegularExpressions;
 using System.Threading.Tasks;
-using WeatherApp.Queries;
 
 namespace WeatherApp
 {
@@ -14,7 +13,6 @@ namespace WeatherApp
     {
         public static IEnumerable<Match> FilterByLocation(this IEnumerable<Match> matches, string location)
         {
-            // Fungerar inte timed out
             IEnumerable<Match> relevantMatches = matches
                 .Where(match => match.Success &&
                             (match.Groups["location"].Value == location));
@@ -50,11 +48,14 @@ namespace WeatherApp
                 x => new { Month = int.Parse(x.Groups["month"].Value), Date = int.Parse(x.Groups["date"].Value) }
                 );
 
-            //var days1 = days;
-            //var days2 = days;
             var days3 = days;
 
-            Stopwatch sw = Stopwatch.StartNew();
+
+            //var days1 = days;
+            //var days2 = days;
+
+
+            //Stopwatch sw = Stopwatch.StartNew();
             //foreach (var day in days1)
             //{
             //    day.Temp = matches.Where(x => int.Parse(x.Groups["month"].Value) == day.Month && int.Parse(x.Groups["date"].Value) == day.Date).Average(x => double.Parse(x.Groups["temp"].Value, CultureInfo.InvariantCulture));
@@ -121,8 +122,8 @@ namespace WeatherApp
                     }
                 }
             }
-            Console.WriteLine("Simons metod: " + sw.ElapsedMilliseconds); // Har inte test tillräckligt mycket för att säga att den gör vad den ska men får ut rimliga värden.
-            sw.Stop();
+            // Console.WriteLine("Simons metod: " + sw.ElapsedMilliseconds); // Har inte test tillräckligt mycket för att säga att den gör vad den ska men får ut rimliga värden.
+            // sw.Stop();
 
             //if (days1.Equals(days2) && days1.Equals(days3) && days2.Equals(days3)) // Verkar vara korrekt
             //{
@@ -131,8 +132,6 @@ namespace WeatherApp
            
             return days;
         }
-
-       
 
     }
 }
