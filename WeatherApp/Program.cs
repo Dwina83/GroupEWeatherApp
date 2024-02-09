@@ -15,16 +15,16 @@ namespace WeatherApp
             int test = 0;
 
             Stopwatch stopwatch = Stopwatch.StartNew();
-            Simons.DaysSortedByTemp2(matches, "Ute");
+            var avgDays = Simons.CreateListOfDaysWithValues(matches, "Ute");
             Console.WriteLine("Metod1: " + stopwatch.ElapsedMilliseconds);
 
             // Indoor.MoldIndex(matches, "Inne");
-            //Indoor.MoldIndex(matches, "Ute");
+            Indoor.MoldIndex(avgDays);
 
-            stopwatch.Restart();
-            Outdoor.DaysSortedByTemp(matches, "Ute", "temp");
-            Console.WriteLine("Metod2: " + stopwatch.ElapsedMilliseconds);
-            stopwatch.Stop();
+            //stopwatch.Restart();
+            //Outdoor.DaysSortedByTemp(matches, "Ute", "temp");
+            //Console.WriteLine("Metod2: " + stopwatch.ElapsedMilliseconds);
+            //stopwatch.Stop();
             //Console.WriteLine();
             //Outdoor.DaysSortedByTemp(matches, "Ute", "humidity");
             //Console.WriteLine();

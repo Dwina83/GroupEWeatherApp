@@ -5,12 +5,13 @@ using System.Linq;
 using System.Text;
 using System.Text.RegularExpressions;
 using System.Threading.Tasks;
+using WeatherApp.Queries;
 
 namespace WeatherApp
 {
     internal class Simons
     {
-        public static void DaysSortedByTemp2(IEnumerable<Match> matches, string location)
+        public static List<AvgTemp> CreateListOfDaysWithValues(IEnumerable<Match> matches, string location)
         {
             Stopwatch stopwatch = Stopwatch.StartNew();
             var filteredMatches = matches.FilterByLocation(location);
@@ -21,14 +22,10 @@ namespace WeatherApp
             Console.WriteLine("CreateListOfDays: " + stopwatch.ElapsedMilliseconds);
 
             stopwatch.Restart();
-            var avgList = days.AssignValues(matches, "Ute");
-            foreach (var day in avgList)
-            {
-                Console.WriteLine("dag: " + day.Date + " månad: " + day.Month + " temp: " + day.Temp + " humidity: " + day.Humidity);
-
-            }
+            var avgList = days.AssignValues(matches, location);
             Console.WriteLine("AssignValues: " + stopwatch.ElapsedMilliseconds);
-            int test = 0;
+            stopwatch.Stop();
+            return avgList;
         }
     }
 }

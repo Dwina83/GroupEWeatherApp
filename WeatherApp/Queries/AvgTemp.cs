@@ -12,5 +12,6 @@ namespace WeatherApp.Queries
         public double Humidity { get; set; }    
         public int Date { get; set; }
         public int Month { get; set; }
+        public double MoldIndex { get; set; }
     }
 }
