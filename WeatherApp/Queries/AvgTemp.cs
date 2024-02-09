@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace WeatherApp.Queries
 {
-    internal class AvgTemp
+    public class AvgTemp
     {
         public double Temp { get; set; }
         public double Humidity { get; set; }    

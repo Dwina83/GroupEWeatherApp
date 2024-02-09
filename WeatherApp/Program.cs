@@ -13,6 +13,9 @@ namespace WeatherApp
             MatchCollection matches = Regex.Matches(output, pattern);
             int test = 0;
 
+            Simons.DaysSortedByTemp2(matches, "Ute");
+            
+
             // Indoor.MoldIndex(matches, "Inne");
             //Indoor.MoldIndex(matches, "Ute");
 
@@ -29,7 +32,7 @@ namespace WeatherApp
             //Outdoor.IsMeterologic(matches, "Winter");
             //Outdoor.IsMeterologic(matches, "Autumn");
 
-            Outdoor.WriteAverageMonthly(matches, "Ute");
+            //Outdoor.WriteAverageMonthly(matches, "Ute");
 
         }
     }
