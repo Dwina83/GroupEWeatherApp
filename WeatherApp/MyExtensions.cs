@@ -44,8 +44,7 @@ namespace WeatherApp
 
         public static List<AvgTemp> AssignValues(this List<AvgTemp> days, IEnumerable<Match> matches, string location)
         {
-           
-            
+           // Retrive matches with correct location and group by month, date
             var groupedMatches = matches.Where(x => x.Groups["location"].Value == location)
                 .GroupBy(
                 x => new { Month = int.Parse(x.Groups["month"].Value), Date = int.Parse(x.Groups["date"].Value) }
@@ -78,6 +77,8 @@ namespace WeatherApp
             //Console.WriteLine("Ny LINQ: " + sw.ElapsedMilliseconds);
 
             //sw.Restart();
+
+            // Sort groups by month, date
             var orderedGroupedMatches = groupedMatches.OrderBy(group => group.Key.Month)
                                                         .ThenBy(group => group.Key.Date);
             Dictionary<(int, int), List<double>> temps = new();
@@ -89,11 +90,13 @@ namespace WeatherApp
 
                 foreach (var date in group)
                 {
+                    // Add temps to list of specific date
                     tempsToAdd.Add(double.Parse(date.Groups["temp"].Value, CultureInfo.InvariantCulture));
                     humidityToAdd.Add(double.Parse(date.Groups["humidity"].Value, CultureInfo.InvariantCulture));
                 }
                 var dateToAdd = group.Key.Date;
                 var monthToAdd = group.Key.Month;
+                // Add list of specific date to temp/humidity dict.
                 temps.Add((dateToAdd, monthToAdd), tempsToAdd);
                 humidity.Add((dateToAdd, monthToAdd), humidityToAdd);
             }
@@ -103,6 +106,7 @@ namespace WeatherApp
                 {
                     if (date.Key == (day.Date, day.Month))
                     {
+                        // Average all temps in dict list of specific date and add to the specific days temp in day list 
                         day.Temp = date.Value.Average();
                         break;
                     }
@@ -111,6 +115,7 @@ namespace WeatherApp
                 {
                     if (date.Key == (day.Date, day.Month))
                     {
+                        // Average all humidity in dict list of specific date and add to the specific days humidity in day list 
                         day.Humidity = date.Value.Average();
                         break;
                     }

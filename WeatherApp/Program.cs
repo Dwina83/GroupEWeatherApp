@@ -1,4 +1,5 @@
-﻿using System.Text.RegularExpressions;
+﻿using System.Diagnostics;
+using System.Text.RegularExpressions;
 
 namespace WeatherApp
 {
@@ -13,13 +14,17 @@ namespace WeatherApp
             MatchCollection matches = Regex.Matches(output, pattern);
             int test = 0;
 
+            Stopwatch stopwatch = Stopwatch.StartNew();
             Simons.DaysSortedByTemp2(matches, "Ute");
-            
+            Console.WriteLine("Metod1: " + stopwatch.ElapsedMilliseconds);
 
             // Indoor.MoldIndex(matches, "Inne");
             //Indoor.MoldIndex(matches, "Ute");
 
-            //Outdoor.DaysSortedByTemp(matches, "Ute", "temp");
+            stopwatch.Restart();
+            Outdoor.DaysSortedByTemp(matches, "Ute", "temp");
+            Console.WriteLine("Metod2: " + stopwatch.ElapsedMilliseconds);
+            stopwatch.Stop();
             //Console.WriteLine();
             //Outdoor.DaysSortedByTemp(matches, "Ute", "humidity");
             //Console.WriteLine();
