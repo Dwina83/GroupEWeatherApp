@@ -4,13 +4,14 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace WeatherApp.Queries
+namespace WeatherApp
 {
-    internal class AvgTemp
+    public class AvgTemp
     {
         public double Temp { get; set; }
-        public double Humidity { get; set; }    
+        public double Humidity { get; set; }
         public int Date { get; set; }
         public int Month { get; set; }
+        public double MoldIndex { get; set; }
     }
 }

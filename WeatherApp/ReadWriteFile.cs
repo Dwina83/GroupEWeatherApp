@@ -28,5 +28,12 @@ namespace WeatherApp
             }
         }
         
+        public static void ClearFile()
+        {
+            using (StreamWriter writer = new StreamWriter(path + "Summary.txt"))
+            {
+                writer.Write("");
+            }
+        }
     }
 }
